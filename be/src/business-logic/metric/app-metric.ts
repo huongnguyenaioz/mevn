@@ -3,7 +3,7 @@ import AppMetric from "../../db/models/metric/app-metric";
 
 export async function getAppMetric() {
    return {
-      users: await UserModel.count(),
+      users: await UserModel.countDocuments(),
       at: new Date()
    }
 }

@@ -3,7 +3,7 @@ import DAULogModel from '../../db/models/metric/DAU-log'
 import dayjs from 'dayjs'
 
 export async function snapshot() {
-   const todayActiveUsers = await DAULogModel.count({
+   const todayActiveUsers = await DAULogModel.countDocuments({
       $and: [
          {at: {$gte: dayjs().startOf('day').toDate()}},
          {at: {$lte: dayjs().endOf('day').toDate()}},

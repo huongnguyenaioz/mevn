@@ -130,7 +130,7 @@ export default {
    },
    count: async (req: Request, res: Response): Promise<any> => {
       try {
-         const rs = await User.count()
+         const rs = await User.countDocuments()
          res.send({data: rs})
       } catch (e) {
          apiError(e, res);

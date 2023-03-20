@@ -152,9 +152,11 @@ export function disableLog() {
 }
 
 export function getLogs() {
+   ensureLogFolderExist()
    return _.reverse(fs.readdirSync(logSetting.logDirPath));
 }
 
 export function getLog(logFile) {
+   ensureLogFolderExist()
    return fs.readFileSync(path.resolve(logSetting.logDirPath, logFile), { encoding: 'utf-8' })
 }

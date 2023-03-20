@@ -12,7 +12,7 @@ const userPublicInfoFields = {_id: 1, avatar: 1, role: 1, fullName: 1, username:
 export const getUserPublicInfo = (userInfo: IUser): IPublicUserInfo => _.pick(userInfo, Object.keys(userPublicInfoFields));
 export const getUserPublicInfoById = async (_id: Types.ObjectId): Promise<IPublicUserInfo> => UserModel.findOne({_id}, userPublicInfoFields);
 export const getUserPublicInfoByIds = async (ids: Types.ObjectId[]): Promise<IPublicUserInfo[]> => UserModel.find({_id: {$in: ids}}, userPublicInfoFields)
-export const isUserWithEmailExisted = async (email: string): Promise<boolean> => await UserModel.count({email}) > 0
+export const isUserWithEmailExisted = async (email: string): Promise<boolean> => await UserModel.countDocuments({email}) > 0
 
 export const createUser = async (data: Partial<IUser>) : Promise<IUser> => {
    return await UserModel.create(data);

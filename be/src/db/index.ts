@@ -38,7 +38,7 @@ async function init() {
 }
 
 async function patchIsNotApplied(patch) {
-   return (await DbMigrateHistoryModel.count({id: patch.patchId, success: true})) === 0
+   return (await DbMigrateHistoryModel.countDocuments({id: patch.patchId, success: true})) === 0
 }
 
 async function migrate() {

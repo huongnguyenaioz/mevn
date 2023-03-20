@@ -13,7 +13,7 @@
           <td>{{cfg.key}}</td>
           <td>{{cfg.value}}</td>
           <td>
-            <button class="fn-btn" @click="api.systemConfig.unset(cfg.key)">
+            <button class="fn-btn" @click="removeConfig(cfg.key)">
               <icon>fas fa-times@16:#d50404</icon>
             </button>
           </td>
@@ -42,10 +42,15 @@ import Icon from '@/components/UiLib/Icon.vue';
 const configs = ref([])
 const key = ref('')
 const value = ref('')
+
 const setConfig = () => {
   systemConfigAPI.set(key.value, value.value)
   key.value = ''
   value.value = ''
+}
+
+const removeConfig = (key) => {
+  systemConfigAPI.unset(key)
 }
 
 const uploadFileS = () => {
